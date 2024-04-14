@@ -77,55 +77,55 @@ public class Arqui_01 extends JPanel { //CLASS
             try {// VALIDACIONES PARA ENTRADA DE DATOS
 
                 // Pedir el valor de X1 para la primera ecuación
-                String aux1 = JOptionPane.showInputDialog(null, "Ingrese el valor de X1 de la PRIMERA ecuación");
+                String aux1 = JOptionPane.showInputDialog(null, "Ingrese el valor de X1 de la PRIMERA restriccion");
                 // Parseo del valor a entero
                 valx1 = Integer.parseInt(aux1);
 
                 // Pedir el signo mediante menú interactivo y validador
                 signo = pedirSigno();
                 //Pedir el valor de X2 para la primera ecuación
-                String aux2 = JOptionPane.showInputDialog(null, "Ingrese el valor de X2 de la PRIMERA ecuación");
+                String aux2 = JOptionPane.showInputDialog(null, "Ingrese el valor de X2 de la PRIMERA restriccion");
                 // Parseo del valor
                 valx2 = Integer.parseInt(aux2);
 
                 //Pedir el valor de la igualdad de la primera ecuación
-                String aux_igual = JOptionPane.showInputDialog(null, "Ingrese el valor de la igualdad para la PRIMERA (RECUERDE LO QUE ESTÁ DESPÚES DE ≥)");
+                String aux_igual = JOptionPane.showInputDialog(null, "Ingrese el valor de la igualdad para la PRIMERA (RECUERDE LO QUE ESTÁ DESPÚES DE ≥ )");
                 // Parseo del valor
                 igual_1 = Integer.parseInt(aux_igual);
 
                 //SEGUNDA ECUACIÓN 
                 // Pedir el valor de X1 para la SEGUNDA ecuación
-                String aux1_2 = JOptionPane.showInputDialog(null, "Ingrese el valor de X1 de la SEGUNDA ecuación");
+                String aux1_2 = JOptionPane.showInputDialog(null, "Ingrese el valor de X1 de la SEGUNDA restriccion");
                 // Parseo del valor a entero
                 valx1_2 = Integer.parseInt(aux1_2);
 
                 // Pedir el signo mediante menú interactivo y validador
                 signo_1 = pedirSigno();
                 //Pedir el valor de X2 para la SEGUNDA ecuación
-                String aux2_2 = JOptionPane.showInputDialog(null, "Ingrese el valor de X2 de la SEGUNDA ecuación");
+                String aux2_2 = JOptionPane.showInputDialog(null, "Ingrese el valor de X2 de la SEGUNDA restriccion");
                 // Parseo del valor
                 valx2_2 = Integer.parseInt(aux2_2);
 
                 //Pedir el valor de la igualdad de la SEGUNDAA ecuación
-                String aux_igual_1 = JOptionPane.showInputDialog(null, "Ingrese el valor de la igualdad para la SEGUNDA ecuacion");
+                String aux_igual_1 = JOptionPane.showInputDialog(null, "Ingrese el valor de la igualdad para la SEGUNDA (RECUERDE LO QUE ESTÁ DESPÚES DE ≥ )");
                 // Parseo del valor
                 igual_2 = Integer.parseInt(aux_igual_1);
 
                 //TERCERA ECUACIÓN 
                 // Pedir el valor de X1 para la TERCERA ecuación
-                String aux1_3 = JOptionPane.showInputDialog(null, "Ingrese el valor de X1 de la TERCERA ecuación");
+                String aux1_3 = JOptionPane.showInputDialog(null, "Ingrese el valor de X1 de la TERCERA restriccion");
                 // Parseo del valor a entero
                 valx1_3 = Integer.parseInt(aux1_3);
 
                 // Pedir el signo mediante menú interactivo y validador
                 signo_2 = pedirSigno();
                 //Pedir el valor de X2 para la primera ecuación
-                String aux2_3 = JOptionPane.showInputDialog(null, "Ingrese el valor de X2 de la TERCERA ecuación");
+                String aux2_3 = JOptionPane.showInputDialog(null, "Ingrese el valor de X2 de la TERCERA restriccion");
                 // Parseo del valor
                 valx2_3 = Integer.parseInt(aux2_3);
 
                 //Pedir el valor de la igualdad de la primera ecuación
-                String aux_igual_2 = JOptionPane.showInputDialog(null, "Ingrese el valor de la igualdad de l TERCERA ecuacion");
+                String aux_igual_2 = JOptionPane.showInputDialog(null, "Ingrese el valor de la igualdad de la TERCERA (RECUERDE LO QUE ESTÁ DESPÚES DE ≥ )");
                 // Parseo del valor
                 int igual_3 = Integer.parseInt(aux_igual_2);
 
@@ -134,7 +134,7 @@ public class Arqui_01 extends JPanel { //CLASS
 
             } catch (NumberFormatException e) {
 
-                JOptionPane.showMessageDialog(null, "DIJE SOLO EL NUMERO POR FAVOR INICIA DESDE LA ECUACIÓN 1\n -HUMANO QUE NO LEE BIEN-");
+                JOptionPane.showMessageDialog(null, "DIJE SOLO EL NUMERO POR FAVOR INICIA DESDE LA RESTRICCION 1\n -HUMANO QUE NO LEE BIEN-");
                 error = false;
             }// Fin catch error only number
 
@@ -144,7 +144,7 @@ public class Arqui_01 extends JPanel { //CLASS
                 menos = "-";
             }
             JOptionPane.showMessageDialog(null, "LOS DATOS INGRESADOS FUERON: \n"
-                    + "PRIMERA ECUACIÓN: " + valx1 + "X1 " + mas + valx2 + "X2 ≥ " + igual_1);
+                    + "PRIMERA RESTRICCION: " + valx1 + "X1 " + mas +" "+ valx2 + "X2 ≥ " + igual_1);
 
         }
 
