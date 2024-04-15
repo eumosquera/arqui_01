@@ -49,7 +49,7 @@ public class Arqui_01 extends JPanel { //CLASS
 
         //Pedir datos mediante JOPtion
         JOptionPane.showMessageDialog(null, "Bienvenido! Sistema de prueba basado en desigualdades de ecuaciones! \n" + "Instrucciones:\n"
-                + "PARA LAS RESTRICCIONES SE PEDIRAN INGRESAR SOLO LOS VALORES DE X1, X2, EL SIGNO ('más(+) o menos(-)') Y LA IGUALDAD \n"
+                + "PARA LAS RESTRICCIONES SE PEDIRAN INGRESAR SOLO LOS VALORES DE X1, X2, EL SIGNO más(+) o menos(-) Y LA IGUALDAD \n"
                 + "EJEMPLO SI LA RESTRICCION ES 3X1 + 2X2 ≥ 210 \n"
                 + "PARA EL VALOR DE X1 INGRESE SOLO EL NUMERO 3"
                 + " DESPÚES INGRESE EL SIGNO + Y POR ULTIMO 210 Y ASÍ HASTA INGRESAR LAS 3 RESTRICCIONES");
@@ -93,7 +93,6 @@ public class Arqui_01 extends JPanel { //CLASS
                 // Parseo del valor
                 igual_1 = Integer.parseInt(aux_igual);
                 /*
-
                 //SEGUNDA ECUACIÓN 
                 // Pedir el valor de X1 para la SEGUNDA ecuación
                 String aux1_2 = JOptionPane.showInputDialog(null, "Ingrese el valor de X1 de la SEGUNDA restriccion");
@@ -183,11 +182,27 @@ public class Arqui_01 extends JPanel { //CLASS
                 + "TERCERA RESTRICCION: " + valx1_3 + "X1 " + menos + " " + valx2_3 + "X2 ≥ " + igual_3);
             
         } // fin else forma 2
-        // Proceso de calculos de los puntos de cada ecuación
-        // Valores de prueba manual
-        // Coordenadas de los puntos que definen la línea recta
+        /* Proceso de calculos de los puntos de cada ecuación
+        * 
+        * Primera restriccion igualando x1 a 0 y x2 a 0
+        */
+        int puntoCoordex1 = 0;
+        int puntoCoordey1 = 0;
+        int puntoCoordex2 = 0;
+        int puntoCoordey2 = 0;
+        puntoCoordex1 = (valx1*0);
+        puntoCoordey1 = Math.round(igual_1 /valx2);
+        puntoCoordex2 = (Math.round(igual_1 /valx1));
+        puntoCoordey2 = (valx2*0);
+        
+        /* Proceso de calculos de los puntos de cada ecuación
+        * 
+        * Segunda restriccion igualando x1 a 0 
+        */
+      
+        // Valores de prueba manual Coordenadas de los puntos que definen la línea recta
         int[][] coordenadas = {
-            {0, 80, 80, 0}, // Línea 1: 
+            {puntoCoordex1, puntoCoordey1, puntoCoordex2, puntoCoordey2}, // Línea 1: 
             {0, 110, 73, 0}, // Línea 2:
             {0, 70, 105, 0} // Línea 3: 
         };
