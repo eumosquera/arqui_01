@@ -3,6 +3,7 @@ package utap.edu.arqui_01;
 import javax.swing.JOptionPane;
 import javax.swing.*;
 import java.awt.*;
+import java.util.*;
 
 /**
  *
@@ -12,10 +13,13 @@ public class Arqui_01 extends JPanel { //CLASS
 
     // VARIABLES X1 Y X2
     private final int[][] lineas;
+    // Variable ´para los colores y nombres
+    private Map<String, Color> colores;
 
     // CONSTRUCTOR 
-    public Arqui_01(int[][] lineas) { // inicio constr
+    public Arqui_01(int[][] lineas, Map<String, Color> colores) { // inicio constr
         this.lineas = lineas;
+        this.colores = colores;
     } // fin constructor
 
     // METODO DE LA CLASE GRAPHICS PARA PINTAR
@@ -23,8 +27,8 @@ public class Arqui_01 extends JPanel { //CLASS
     public void paintComponent(Graphics g) { // Inicio Pintar
         super.paintComponent(g);
         /* Dibuja los ejes del plano separa el tamaño estableciendo las mitades 
-        parte dese la mitad del plano como punto 0 
-        Color del plano 
+        * parte dese la mitad del plano como punto 0 
+        * Color del plano 
          */
         g.setColor(Color.BLACK);
         // Eje x
@@ -37,11 +41,23 @@ public class Arqui_01 extends JPanel { //CLASS
         // Dibuja las líneas recta en el plano cartesiano
         for (int i = 0; i < lineas.length; i++) {
             int[] linea = lineas[i];
+            String nombre = "Restriccion " + (i + 1);
+            if (colores.containsKey(nombre)) {
+                g.setColor(colores.get(nombre));
+            } else {
+                g.setColor(Color.RED);
+            }
             int x1 = linea[0];
             int y1 = linea[1];
             int x2 = linea[2];
             int y2 = linea[3];
+
+            // Dibuja el plano por la mitad
             g.drawLine(x1 + getWidth() / 2, -y1 + getHeight() / 2, x2 + getWidth() / 2, -y2 + getHeight() / 2);
+
+            // Dibuja los nombres
+            int offset = i * 20; // aumenta el valor del eje Y para que los nombres no se peguen
+            g.drawString(nombre, x2 + getWidth() / 2 + 20, -y2 + getHeight() / 2 + 20 + offset);
         } // Fin For dibjar lineas
     } // Fin pintar Method
 
@@ -153,65 +169,93 @@ public class Arqui_01 extends JPanel { //CLASS
 
         }// fin else forma 1
         // Segunda
-        if (signo_1==1) {
-            
+        if (signo_1 == 1) {
+
             flag = true;
             mas = "+";
             // Imprime la ecuación con el signo mas
-                    JOptionPane.showMessageDialog(null, "LOS DATOS INGRESADOS FUERON: \n"
-                + "PRIMERA RESTRICCION: " + valx1_2 + "X1 " + mas + " " + valx2_2 + "X2 ≥ " + igual_2);
-        } else{
+            JOptionPane.showMessageDialog(null, "LOS DATOS INGRESADOS FUERON: \n"
+                    + "PRIMERA RESTRICCION: " + valx1_2 + "X1 " + mas + " " + valx2_2 + "X2 ≥ " + igual_2);
+        } else {
             flag = false;
             menos = "-";
-                    JOptionPane.showMessageDialog(null, "LOS DATOS INGRESADOS FUERON: \n"
-                + "PRIMERA RESTRICCION: " + valx1_2 + "X1 " + menos + " " + valx2_2 + "X2 ≥ " + igual_2);
-            
+            JOptionPane.showMessageDialog(null, "LOS DATOS INGRESADOS FUERON: \n"
+                    + "SEGUNDA RESTRICCION: " + valx1_2 + "X1 " + menos + " " + valx2_2 + "X2 ≥ " + igual_2);
+
         } // fin else forma 2
         // tercera
-        if (signo_2==1) {
-            
+        if (signo_2 == 1) {
+
             flag = true;
             mas = "+";
             // Imprime la ecuación con el signo mas
-                    JOptionPane.showMessageDialog(null, "LOS DATOS INGRESADOS FUERON: \n"
-                + "TERCERA RESTRICCION: " + valx1_3 + "X1 " + mas + " " + valx2_3 + "X2 ≥ " + igual_3);
-        } else{
+            JOptionPane.showMessageDialog(null, "LOS DATOS INGRESADOS FUERON: \n"
+                    + "TERCERA RESTRICCION: " + valx1_3 + "X1 " + mas + " " + valx2_3 + "X2 ≥ " + igual_3);
+        } else {
             flag = false;
             menos = "-";
-                    JOptionPane.showMessageDialog(null, "LOS DATOS INGRESADOS FUERON: \n"
-                + "TERCERA RESTRICCION: " + valx1_3 + "X1 " + menos + " " + valx2_3 + "X2 ≥ " + igual_3);
-            
+            JOptionPane.showMessageDialog(null, "LOS DATOS INGRESADOS FUERON: \n"
+                    + "TERCERA RESTRICCION: " + valx1_3 + "X1 " + menos + " " + valx2_3 + "X2 ≥ " + igual_3);
+
         } // fin else forma 2
         /* Proceso de calculos de los puntos de cada ecuación
         * 
         * Primera restriccion igualando x1 a 0 y x2 a 0
-        */
-        int puntoCoordex1 = 0;
-        int puntoCoordey1 = 0;
-        int puntoCoordex2 = 0;
-        int puntoCoordey2 = 0;
-        puntoCoordex1 = (valx1*0);
-        puntoCoordey1 = Math.round(igual_1 /valx2);
-        puntoCoordex2 = (Math.round(igual_1 /valx1));
-        puntoCoordey2 = (valx2*0);
-        
+         */
+        int puntoCoordex1R1 = 0;
+        int puntoCoordey1R1 = 0;
+        int puntoCoordex2R1 = 0;
+        int puntoCoordey2R1 = 0;
+        puntoCoordex1R1 = (valx1 * 0);
+        puntoCoordey1R1 = Math.round(igual_1 / valx2);
+        puntoCoordex2R1 = (Math.round(igual_1 / valx1));
+        puntoCoordey2R1 = (valx2 * 0);
+
         /* Proceso de calculos de los puntos de cada ecuación
         * 
         * Segunda restriccion igualando x1 a 0 
-        */
-      
-        // Valores de prueba manual Coordenadas de los puntos que definen la línea recta
+         
+        int puntoCoordex1R2 = 0;
+        int puntoCoordey1R2 = 0;
+        int puntoCoordex2R2 = 0;
+        int puntoCoordey2R2 = 0;
+        puntoCoordex1R2 = (valx1_2 * 0);
+        puntoCoordey1R2 = (igual_2 / valx2_2);
+        puntoCoordex2R2 = (igual_2 / valx1_2);
+        puntoCoordey2R2 = (valx2_2 * 0);
+
+        /* Proceso de calculos de los puntos de cada ecuación
+        * 
+        * Segunda restriccion igualando x1 a 0 
+         
+        int puntoCoordex1R3 = 0;
+        int puntoCoordey1R3 = 0;
+        int puntoCoordex2R3 = 0;
+        int puntoCoordey2R3 = 0;
+        puntoCoordex1R3 = (valx1_3 * 0);
+        puntoCoordey1R3 = Math.round(igual_3 / valx2_3);
+        puntoCoordex2R3 = (Math.round(igual_3 / valx1_3));
+        puntoCoordey2R3 = (valx2_3 * 0);
+*/
+        //Coordenadas de los puntos que definen la línea recta
+        JOptionPane.showMessageDialog(null, "Los puntos de las restricciones son: \n"
+                +"RESTRICCION 1: (" +puntoCoordex1R1 + ","+puntoCoordey1R1+") Y (" + puntoCoordex2R1 +","+puntoCoordey2R1 +")");
         int[][] coordenadas = {
-            {puntoCoordex1, puntoCoordey1, puntoCoordex2, puntoCoordey2}, // Línea 1: 
-            {0, 110, 73, 0}, // Línea 2:
-            {0, 70, 105, 0} // Línea 3: 
+            {puntoCoordex1R1, puntoCoordey1R1, puntoCoordex2R1, puntoCoordey2R1}, // Línea 1: 
+            {0, 0, 0, 0}, // Línea 2:
+            {0, 0, 0, 0} // Línea 3: 
         };
 
+        // Colores de las lineas y nombres 
+        Map<String, Color> colores = new HashMap<>();
+        colores.put("Restriccion 1", Color.RED);
+        colores.put("Restriccion 2", Color.BLUE);
+        colores.put("Restriccion 3", Color.GREEN);
         // Crea y configura el marco
         JFrame frame = new JFrame("SISTEMA DE PRUEBA 😎");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         // Agrega el panel con las líneas recta al marco
-        frame.add(new Arqui_01(coordenadas));
+        frame.add(new Arqui_01(coordenadas, colores));
         // Establece el tamaño del marco
         frame.setSize(400, 400);
         // Hace visible el marco
