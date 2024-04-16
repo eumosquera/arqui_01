@@ -109,8 +109,9 @@ public class Arqui_01 extends JPanel { //CLASS
                 // Parseo del valor
                 igual_1 = Integer.parseInt(aux_igual);
                 /*
-                //SEGUNDA ECUACIÓN 
-                // Pedir el valor de X1 para la SEGUNDA ecuación
+                *SEGUNDA ECUACIÓN 
+                * Pedir el valor de X1 para la SEGUNDA ecuación
+                */
                 String aux1_2 = JOptionPane.showInputDialog(null, "Ingrese el valor de X1 de la SEGUNDA restriccion");
                 // Parseo del valor a entero
                 valx1_2 = Integer.parseInt(aux1_2);
@@ -125,8 +126,11 @@ public class Arqui_01 extends JPanel { //CLASS
                 // Parseo del valor
                 igual_2 = Integer.parseInt(aux_igual_1);
 
-                //TERCERA ECUACIÓN 
-                // Pedir el valor de X1 para la TERCERA ecuación
+                /*
+                *
+                * TERCERA ECUACIÓN 
+                * Pedir el valor de X1 para la TERCERA ecuación
+                */
                 String aux1_3 = JOptionPane.showInputDialog(null, "Ingrese el valor de X1 de la TERCERA restriccion");
                 // Parseo del valor a entero
                 valx1_3 = Integer.parseInt(aux1_3);
@@ -139,9 +143,9 @@ public class Arqui_01 extends JPanel { //CLASS
                 //Pedir el valor de la igualdad de la primera ecuación
                 String aux_igual_2 = JOptionPane.showInputDialog(null, "Ingrese el valor de la igualdad de la TERCERA (RECUERDE LO QUE ESTÁ DESPÚES DE ≥ )");
                 // Parseo del valor
-                int igual_3 = Integer.parseInt(aux_igual_2);
+                igual_3 = Integer.parseInt(aux_igual_2);
                 // Se llenaron todos los datos sin error
-                 */
+                 
                 error = true;
 
             } catch (NumberFormatException e) {
@@ -214,7 +218,7 @@ public class Arqui_01 extends JPanel { //CLASS
         /* Proceso de calculos de los puntos de cada ecuación
         * 
         * Segunda restriccion igualando x1 a 0 
-         
+        */ 
         int puntoCoordex1R2 = 0;
         int puntoCoordey1R2 = 0;
         int puntoCoordex2R2 = 0;
@@ -227,7 +231,7 @@ public class Arqui_01 extends JPanel { //CLASS
         /* Proceso de calculos de los puntos de cada ecuación
         * 
         * Segunda restriccion igualando x1 a 0 
-         
+         */
         int puntoCoordex1R3 = 0;
         int puntoCoordey1R3 = 0;
         int puntoCoordex2R3 = 0;
@@ -236,7 +240,6 @@ public class Arqui_01 extends JPanel { //CLASS
         puntoCoordey1R3 = Math.round(igual_3 / valx2_3);
         puntoCoordex2R3 = (Math.round(igual_3 / valx1_3));
         puntoCoordey2R3 = (valx2_3 * 0);
-*/
         //Coordenadas de los puntos que definen la línea recta
         JOptionPane.showMessageDialog(null, "Los puntos de las restricciones son: \n"
                 +"RESTRICCION 1: (" +puntoCoordex1R1 + ","+puntoCoordey1R1+") Y (" + puntoCoordex2R1 +","+puntoCoordey2R1 +")");
