@@ -56,8 +56,8 @@ public class Arqui_01 extends JPanel { //CLASS
             g.drawLine(x1 + getWidth() / 2, -y1 + getHeight() / 2, x2 + getWidth() / 2, -y2 + getHeight() / 2);
 
             // Dibuja los nombres
-            int offset = i * 20; // aumenta el valor del eje Y para que los nombres no se peguen
-            g.drawString(nombre, x2 + getWidth() / 2 + 20, -y2 + getHeight() / 2 + 20 + offset);
+            //int offset = i * 20; // aumenta el valor del eje Y para que los nombres no se peguen
+            g.drawString(nombre, x2 + getWidth() / 2 + 5, -y2 + getHeight() / 2 - 5);
         } // Fin For dibjar lineas
     } // Fin pintar Method
 
@@ -78,9 +78,13 @@ public class Arqui_01 extends JPanel { //CLASS
         // VARIABLES GLOBALES 
         String mas = "";
         String menos = "";
+        String mayorQ = "";
+        String menorQ = "";
+        String igualQ = "";
         int valx1 = 0;
         int valx2 = 0;
         int signo = 0;
+        int signoIgual = 0;
         int igual_1 = 0;
         int valx1_2 = 0;
         int signo_1 = 0;
@@ -104,14 +108,17 @@ public class Arqui_01 extends JPanel { //CLASS
                 String aux2 = JOptionPane.showInputDialog(null, "Ingrese el valor de X2 de la PRIMERA restriccion");
                 // Parseo del valor
                 valx2 = Integer.parseInt(aux2);
+
+                //Pedir el signo de igualdad
+                //signoIgual = pedirIgualdad();
                 //Pedir el valor de la igualdad de la primera ecuación
-                String aux_igual = JOptionPane.showInputDialog(null, "Ingrese el valor de la igualdad para la PRIMERA (RECUERDE LO QUE ESTÁ DESPÚES DE ≥ )");
+                String aux_igual = JOptionPane.showInputDialog(null, "Ingrese el valor de la igualdad para la PRIMERA (RECUERDE LO QUE ESTÁ DESPÚES DE ≥ ≤ = )");
                 // Parseo del valor
                 igual_1 = Integer.parseInt(aux_igual);
                 /*
                 *SEGUNDA ECUACIÓN 
                 * Pedir el valor de X1 para la SEGUNDA ecuación
-                */
+                 */
                 String aux1_2 = JOptionPane.showInputDialog(null, "Ingrese el valor de X1 de la SEGUNDA restriccion");
                 // Parseo del valor a entero
                 valx1_2 = Integer.parseInt(aux1_2);
@@ -130,7 +137,7 @@ public class Arqui_01 extends JPanel { //CLASS
                 *
                 * TERCERA ECUACIÓN 
                 * Pedir el valor de X1 para la TERCERA ecuación
-                */
+                 */
                 String aux1_3 = JOptionPane.showInputDialog(null, "Ingrese el valor de X1 de la TERCERA restriccion");
                 // Parseo del valor a entero
                 valx1_3 = Integer.parseInt(aux1_3);
@@ -145,7 +152,6 @@ public class Arqui_01 extends JPanel { //CLASS
                 // Parseo del valor
                 igual_3 = Integer.parseInt(aux_igual_2);
                 // Se llenaron todos los datos sin error
-                 
                 error = true;
 
             } catch (NumberFormatException e) {
@@ -156,6 +162,18 @@ public class Arqui_01 extends JPanel { //CLASS
 
         } // Fin ciclo While
 
+        // Switch para el signo de igualdad
+        switch (signoIgual) { // Apertura switch
+            case 1:
+                mayorQ = "≥";
+
+                break;
+            case 2:
+                menorQ = "≤";
+            default:
+                igualQ = "=";
+        } // Fin sentencia switch
+
         // Armar las restricciones completas para mostrarlas post 
         // No se me ocurre otra forma xd
         if (signo == 1) {
@@ -164,27 +182,36 @@ public class Arqui_01 extends JPanel { //CLASS
             mas = "+";
             // Imprime la ecuación con el signo mas
             JOptionPane.showMessageDialog(null, "LOS DATOS INGRESADOS FUERON: \n"
-                    + "PRIMERA RESTRICCION: " + valx1 + "X1 " + mas + " " + valx2 + "X2 ≥ " + igual_1);
+                    + "PRIMERA RESTRICCION: " + valx1 + "X1 " + mas + " " + valx2 + "X2 ≤ " + igual_1);
         } else {
             flag = false;
             menos = "-";
             JOptionPane.showMessageDialog(null, "LOS DATOS INGRESADOS FUERON: \n"
-                    + "PRIMERA RESTRICCION: " + valx1 + "X1 " + menos + " " + valx2 + "X2 ≥ " + igual_1);
+                    + "PRIMERA RESTRICCION: " + valx1 + "X1 " + menos + " " + valx2 + "X2 ≤ " + igual_1);
 
-        }// fin else forma 1
-        // Segunda
+        }
+        /*else if (signo == 2 && signoIgual == 1) {
+            flag = false;
+            menos = "-";
+            JOptionPane.showMessageDialog(null, "LOS DATOS INGRESADOS FUERON: \n"
+                    + "PRIMERA RESTRICCION: " + valx1 + "X1 " + menos + " " + valx2 + "X2 " +mayorQ +" "+ + igual_1);
+
+        }
+         */
+        // fin else forma 1
+        //Segunda
         if (signo_1 == 1) {
 
             flag = true;
             mas = "+";
             // Imprime la ecuación con el signo mas
             JOptionPane.showMessageDialog(null, "LOS DATOS INGRESADOS FUERON: \n"
-                    + "PRIMERA RESTRICCION: " + valx1_2 + "X1 " + mas + " " + valx2_2 + "X2 ≥ " + igual_2);
+                    + "PRIMERA RESTRICCION: " + valx1_2 + "X1 " + mas + " " + valx2_2 + "X2 ≤ " + igual_2);
         } else {
             flag = false;
             menos = "-";
             JOptionPane.showMessageDialog(null, "LOS DATOS INGRESADOS FUERON: \n"
-                    + "SEGUNDA RESTRICCION: " + valx1_2 + "X1 " + menos + " " + valx2_2 + "X2 ≥ " + igual_2);
+                    + "SEGUNDA RESTRICCION: " + valx1_2 + "X1 " + menos + " " + valx2_2 + "X2 ≤ " + igual_2);
 
         } // fin else forma 2
         // tercera
@@ -194,18 +221,21 @@ public class Arqui_01 extends JPanel { //CLASS
             mas = "+";
             // Imprime la ecuación con el signo mas
             JOptionPane.showMessageDialog(null, "LOS DATOS INGRESADOS FUERON: \n"
-                    + "TERCERA RESTRICCION: " + valx1_3 + "X1 " + mas + " " + valx2_3 + "X2 ≥ " + igual_3);
+                    + "TERCERA RESTRICCION: " + valx1_3 + "X1 " + mas + " " + valx2_3 + "X2 ≤ " + igual_3);
         } else {
             flag = false;
             menos = "-";
             JOptionPane.showMessageDialog(null, "LOS DATOS INGRESADOS FUERON: \n"
-                    + "TERCERA RESTRICCION: " + valx1_3 + "X1 " + menos + " " + valx2_3 + "X2 ≥ " + igual_3);
+                    + "TERCERA RESTRICCION: " + valx1_3 + "X1 " + menos + " " + valx2_3 + "X2 ≤ " + igual_3);
 
         } // fin else forma 2
+
         /* Proceso de calculos de los puntos de cada ecuación
         * 
         * Primera restriccion igualando x1 a 0 y x2 a 0
          */
+        float aux_x1 = 0;
+        float aux_y1 = 0;
         int puntoCoordex1R1 = 0;
         int puntoCoordey1R1 = 0;
         int puntoCoordex2R1 = 0;
@@ -218,19 +248,19 @@ public class Arqui_01 extends JPanel { //CLASS
         /* Proceso de calculos de los puntos de cada ecuación
         * 
         * Segunda restriccion igualando x1 a 0 
-        */ 
+         */
         int puntoCoordex1R2 = 0;
         int puntoCoordey1R2 = 0;
         int puntoCoordex2R2 = 0;
         int puntoCoordey2R2 = 0;
         puntoCoordex1R2 = (valx1_2 * 0);
-        puntoCoordey1R2 = (igual_2 / valx2_2);
-        puntoCoordex2R2 = (igual_2 / valx1_2);
+        puntoCoordey1R2 = Math.round(igual_2 / valx2_2);
+        puntoCoordex2R2 = (Math.round(igual_2 / valx1_2));
         puntoCoordey2R2 = (valx2_2 * 0);
 
         /* Proceso de calculos de los puntos de cada ecuación
         * 
-        * Segunda restriccion igualando x1 a 0 
+        * Tercera restriccion igualando x1 a 0 
          */
         int puntoCoordex1R3 = 0;
         int puntoCoordey1R3 = 0;
@@ -240,13 +270,16 @@ public class Arqui_01 extends JPanel { //CLASS
         puntoCoordey1R3 = Math.round(igual_3 / valx2_3);
         puntoCoordex2R3 = (Math.round(igual_3 / valx1_3));
         puntoCoordey2R3 = (valx2_3 * 0);
+
         //Coordenadas de los puntos que definen la línea recta
         JOptionPane.showMessageDialog(null, "Los puntos de las restricciones son: \n"
-                +"RESTRICCION 1: (" +puntoCoordex1R1 + ","+puntoCoordey1R1+") Y (" + puntoCoordex2R1 +","+puntoCoordey2R1 +")");
+                + "RESTRICCION 1: (" + puntoCoordex1R1 + "," + puntoCoordey1R1 + ") Y (" + puntoCoordex2R1 + "," + puntoCoordey2R1 + ") \n"
+                + "RESTRICCION 2: (" + puntoCoordex1R2 + "," + puntoCoordey1R2 + ") Y (" + puntoCoordex2R2 + "," + puntoCoordey2R2 + ") \n"
+        +"RESTRICCION 3: (" + puntoCoordex1R3 + "," + puntoCoordey1R3 + ") Y (" + puntoCoordex2R3 + "," + puntoCoordey2R3 +")");
         int[][] coordenadas = {
             {puntoCoordex1R1, puntoCoordey1R1, puntoCoordex2R1, puntoCoordey2R1}, // Línea 1: 
-            {0, 0, 0, 0}, // Línea 2:
-            {0, 0, 0, 0} // Línea 3: 
+            {puntoCoordex1R2, puntoCoordey1R2, puntoCoordex2R2, puntoCoordey2R2}, // Línea 2:
+            {puntoCoordey2R3, puntoCoordey1R3, puntoCoordex2R3, puntoCoordey2R3} // Línea 3: 
         };
 
         // Colores de las lineas y nombres 
@@ -260,7 +293,7 @@ public class Arqui_01 extends JPanel { //CLASS
         // Agrega el panel con las líneas recta al marco
         frame.add(new Arqui_01(coordenadas, colores));
         // Establece el tamaño del marco
-        frame.setSize(400, 400);
+        frame.setSize(600, 600);
         // Hace visible el marco
         frame.setVisible(true);
 
@@ -285,4 +318,22 @@ public class Arqui_01 extends JPanel { //CLASS
         return signo;
     }
 
+    public static int pedirIgualdad() {
+        int signo = 0;
+        do {
+            String aux_sig = JOptionPane.showInputDialog(null, "Por favor escoja el signo de la igualdad: \n"
+                    + " 1 para (≥) (mayor o igual) \n"
+                    + " 2 para (≤) (menor o igual)"
+                    + " 3 para (=) (igual)");
+            try {
+                // Convierte el signo para tratamiento mejor
+                signo = Integer.parseInt(aux_sig);
+            } catch (NumberFormatException e) {
+                // Si la entrada no es un número, muestra un mensaje de error
+                JOptionPane.showMessageDialog(null, "Por favor, ingresa un número válido.");
+            }
+        } while (signo != 2 && signo != 1 && signo != 3);
+
+        return signo;
+    }
 }// CLASS 
